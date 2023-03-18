@@ -16,5 +16,12 @@ pipeline {
                 sh 'npm test'
             }
         }
+        stage('Archive') {
+            steps {
+                echo 'Deploying..'
+                sh 'zip -r build.zip .' // zip the build
+                archiveArtifacts artifacts: 'build.zip'
+            }
+        }
     }
 }
