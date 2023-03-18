@@ -19,7 +19,7 @@ pipeline {
         stage('Archive') {
             steps {
                 echo 'Deploying..'
-                sh 'zip -r build.zip .' // zip the build
+                zip zipFile: 'build.zip', archive: false, dir: '.' // zip the build
                 archiveArtifacts artifacts: 'build.zip'
             }
         }
